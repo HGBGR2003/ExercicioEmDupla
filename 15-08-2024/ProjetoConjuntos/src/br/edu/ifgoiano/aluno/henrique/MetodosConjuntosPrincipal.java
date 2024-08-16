@@ -1,19 +1,22 @@
 package br.edu.ifgoiano.aluno.henrique;
 
-public class PrincipalConjunto {
+public class MetodosConjuntosPrincipal {
     public static void main(String[] args) {
         int []a = {2,4};
         int []b = {4,5,6};
         int [] juntos = new int[a.length + b.length];
+        int pulaVetor = 2;
+        int index = 0;
 
         System.arraycopy(a, 0, juntos, 0, a.length);
         System.arraycopy(b, 0, juntos, a.length, b.length);
-        for (int i = 0; i < juntos.length; i++){
-            if (juntos[i] == 4){
-                
-            }
 
+        for (int i = 0; i < juntos.length; i++){
+            System.out.println(juntos[i]);
         }
+
 
     }
 }
+
+
