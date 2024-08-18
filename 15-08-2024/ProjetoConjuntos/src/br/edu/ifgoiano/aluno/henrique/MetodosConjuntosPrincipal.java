@@ -2,6 +2,8 @@ package br.edu.ifgoiano.aluno.henrique;
 
 import java.util.ArrayList;
 
+import br.edu.ifgoiano.aluno.henrique.externas.MetodoInterseccao;
+
 public class MetodosConjuntosPrincipal {
   public static void main(String[] args) {
     int[] a = { 2, 4 };
@@ -12,6 +14,11 @@ public class MetodosConjuntosPrincipal {
     System.out.println("\n");
     System.out.println(uniao);
 
+    MetodoInterseccao intersec = new MetodoInterseccao();
+    ArrayList<Integer> inter = new ArrayList<>();
+    inter = intersec.intercepta(a, b);
+    System.out.println(inter);
+
     ArrayList<ArrayList<Integer>> conjPar = conjDParts(a);
     System.out.println(conjPar);
 
@@ -19,7 +26,7 @@ public class MetodosConjuntosPrincipal {
     System.out.println(prodCart);
   }
 
-  public static ArrayList<Integer> unir (int[]a, int[]b){
+  public static ArrayList<Integer> unir(int[] a, int[] b) {
     int aux = 0;
     int[] juntos = new int[a.length + b.length];
     System.arraycopy(a, 0, juntos, 0, a.length);
