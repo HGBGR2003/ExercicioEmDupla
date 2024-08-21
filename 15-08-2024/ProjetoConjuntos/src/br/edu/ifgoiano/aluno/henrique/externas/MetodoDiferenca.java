@@ -16,11 +16,11 @@ public class MetodoDiferenca {
         b.add(5);
         b.add(6);
 
-        HashSet <Integer> setA = new HashSet <> (a);
-        HashSet <Integer> setB = new HashSet <> (b);
+        HashSet <Integer> saidaA = new HashSet <> (a);
+        HashSet <Integer> saidaB = new HashSet <> (b);
 
-        diferenca.addAll(setA);
-        diferenca.removeAll(setB);
+        diferenca.addAll(saidaA);
+        diferenca.removeAll(saidaB);
 
         System.out.println(diferenca);
     }
