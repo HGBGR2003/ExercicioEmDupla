@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class MetodoComplementar {
 
     public ArrayList<Integer> verificaComplementar() {
-        int a[] = { 2, 4 };
-        int u[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int [] a = { 2, 4 };
+        int [] u = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         ArrayList<Integer> comp = new ArrayList<>();
         for (int i = 0; i < u.length; i++) {
             comp.add(u[i]);
