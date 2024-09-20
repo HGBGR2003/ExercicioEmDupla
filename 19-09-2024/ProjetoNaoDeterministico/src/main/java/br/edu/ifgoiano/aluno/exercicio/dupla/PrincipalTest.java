@@ -12,7 +12,7 @@ public class PrincipalTest {
                 "   \"likes\": 4190683,\n" +
                 "   \"category\": \"Product/service\",\n" +
                 "   \"is_published\": true,\n" +
-                "   \"website\": \"http://developers.facebook.com\",\n" +
+                "   \"website\": \"https://developers.facebook.com\",\n" +
                 "   \"username\": \"platform\",\n" +
                 "   \"founded\": \"2007\",\n" +
                 "   \"mission\": \"To make the web more open and social.\",\n" +
