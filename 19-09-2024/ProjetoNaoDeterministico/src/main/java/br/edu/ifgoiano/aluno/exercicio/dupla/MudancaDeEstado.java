@@ -1,60 +1,94 @@
 package br.edu.ifgoiano.aluno.exercicio.dupla;
 
+
+import com.google.gson.annotations.SerializedName;
+
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class MudancaDeEstado {
-    Set<String> estados = new HashSet<>();
-    Set <Character> alpabeto = new HashSet<>();
-    String inicialEstado;
-    Set <String> fimEstados = new HashSet<>();
-    Map<String, Map<Character, String>> transicoes = new HashMap<>();
+    @SerializedName("alpha")
+    private List <String> alfabeto;
+    @SerializedName("state")
+   private Set <String> estados;
+    @SerializedName("initial_state")
+   private String inicialEstado;
+    @SerializedName("end_state")
+   private Set <String> finalEstado;
+    @SerializedName("transition")
+   private Map <String, Map <String, String>> funcaoTransicao = new HashMap<>();
 
-    public void adicionarEstados (String estado){
-        estados.add(estado);
+    public MudancaDeEstado() {
+        //this.funcaoTransicao = new HashMap<>();
     }
 
-    public void adicionarTransicao(String deEstado, char entrada, String paraEstado){
-        alpabeto.add(entrada);
-        transicoes.putIfAbsent(paraEstado, new HashMap<>());
-        transicoes.get(paraEstado).put(entrada, paraEstado);
+    public List<String> getAlfabeto() {
+        return alfabeto;
     }
 
-    public void iniciandoEstado(String estado){
-        inicialEstado = estado;
+    public void setAlfabeto(List<String> alfabeto) {
+        this.alfabeto = alfabeto;
     }
 
-    public void fimEstado (String estado){
-        fimEstados.add(estado);
+    public Set<String> getEstados() {
+        return estados;
     }
 
-    @Override
-    public String toString() {
-        return "MudancaDeEstado{" +
-                "estados=" + estados +
-                ", alpabeto=" + alpabeto +
-                ", inicialEstado='" + inicialEstado + '\'' +
-                ", fimEstados=" + fimEstados +
-                ", transicoes=" + transicoes +
-                '}';
+    public void setEstados(Set<String> estados) {
+        this.estados = estados;
     }
 
-    public boolean aceitou(String entrada){
+    public String getInicialEstado() {
+        return inicialEstado;
+    }
+
+    public void setInicialEstado(String inicialEstado) {
+        this.inicialEstado = inicialEstado;
+    }
+
+    public Set<String> getFinalEstado() {
+        return finalEstado;
+    }
+
+    public void setFinalEstado(Set<String> finalEstado) {
+        this.finalEstado = finalEstado;
+    }
+
+    public Map<String, Map<String, String>> getFuncaoTransicao() {
+        return funcaoTransicao;
+    }
+
+    public void setFuncaoTransicao(Map<String, Map<String, String>> funcaoTransicao) {
+        this.funcaoTransicao = funcaoTransicao;
+    }
+
+    public boolean simulando(String entrada){
         String correnteEstado = inicialEstado;
-        for (char simbolo: entrada.toCharArray()){
-            if (!alpabeto.contains(simbolo)){
-                return false;
-            }
-            Map<Character, String> estadoTransicoes = transicoes.get(correnteEstado);
-            if (estadoTransicoes == null || !estadoTransicoes.containsKey(simbolo)){
-                return false;
-            }
-            correnteEstado = estadoTransicoes.get(simbolo);
-        }
-        return fimEstados.contains(correnteEstado);
-    }
+        System.out.println("Estado inicial: " + correnteEstado);
 
+        for (char simbolo: entrada.toCharArray()){
+            String simboloSt = String.valueOf(simbolo);
+            Map<String, String> transicoes = funcaoTransicao.get(correnteEstado);
+
+            if (transicoes == null) {
+                return false; // Transição não definida
+            }
+
+            String proximoEstado = transicoes.get(simbolo);
+
+            if (proximoEstado == null){
+                System.out.println("Não há transição para o símbolo " + simbolo + " no estado " + correnteEstado);
+                return false;
+            }
+
+            correnteEstado = proximoEstado;
+            System.out.println("Lido: " + simbolo + ", próximo estado: " + correnteEstado);
+
+        }
+        System.out.println("Estado final: " + correnteEstado);
+        return finalEstado.contains(correnteEstado);
+    }
 
 }

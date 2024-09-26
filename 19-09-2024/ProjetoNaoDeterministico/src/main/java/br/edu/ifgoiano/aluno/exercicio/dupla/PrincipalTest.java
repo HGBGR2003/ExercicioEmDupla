@@ -1,25 +1,45 @@
 package br.edu.ifgoiano.aluno.exercicio.dupla;
 
-import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class PrincipalTest {
     public static void main(String[] args) {
         String testeJson;
 
-        testeJson =  "{\n" +
-                "   \"id\": \"19292868552\",\n" +
-                "   \"name\": \"Facebook Platform\",\n" +
-                "   \"likes\": 4190683,\n" +
-                "   \"category\": \"Product/service\",\n" +
-                "   \"is_published\": true,\n" +
-                "   \"website\": \"https://developers.facebook.com\",\n" +
-                "   \"username\": \"platform\",\n" +
-                "   \"founded\": \"2007\",\n" +
-                "   \"mission\": \"To make the web more open and social.\",\n" +
-                "   \"talking_about_count\": 98577\n" +
-                "}";
+        testeJson = "{\n" +
+                "    \"alpha\": [\"0\", \"1\"],\n" +
+                "    \"state\": [\"q0\", \"q1\", \"q2\"],\n" +
+                "    \"initial_state\": \"q0\",\n" +
+                "    \"end_state\": [\"q2\"],\n" +
+                "    \"transition\": {\n" +
+                "        \"q0\": {\n" +
+                "            \"0\": \"q0\",\n" +
+                "            \"1\": \"q1\"\n" +
+                "        },\n" +
+                "        \"q1\": {\n" +
+                "            \"0\": \"q0\",\n" +
+                "            \"1\": \"q2\"\n" +
+                "        },\n" +
+                "        \"q2\": {\n" +
+                "            \"0\": \"q2\",\n" +
+                "            \"1\": \"q2\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "}\n";
+
+        Gson gson = new Gson();
+        MudancaDeEstado mde = gson.fromJson(testeJson, MudancaDeEstado.class);
+
+
+        String entrada = "011";
+        boolean aceitou = mde.simulando(entrada);
+        System.out.println("A string " + entrada + " é aceita pelo DFA? " + aceitou);
+
+
 
 
 
     }
+
 }
