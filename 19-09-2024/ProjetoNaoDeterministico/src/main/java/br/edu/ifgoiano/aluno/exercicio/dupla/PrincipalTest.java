@@ -19,9 +19,7 @@ public class PrincipalTest {
                 "   \"talking_about_count\": 98577\n" +
                 "}";
 
-        JSONObject test = new JSONObject(testeJson);
-        String mostrar = test.getString("category");
-        System.out.println(mostrar);
+
 
     }
 }
