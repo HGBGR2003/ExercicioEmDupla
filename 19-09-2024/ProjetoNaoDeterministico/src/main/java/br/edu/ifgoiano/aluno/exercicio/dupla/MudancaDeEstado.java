@@ -76,7 +76,7 @@ public class MudancaDeEstado {
                 return false; // Transição não definida
             }
 
-            String proximoEstado = transicoes.get(simbolo);
+            String proximoEstado = transicoes.get(simboloSt);
 
             if (proximoEstado == null){
                 System.out.println("Não há transição para o símbolo " + simbolo + " no estado " + correnteEstado);
