@@ -1,4 +1,4 @@
-package br.edu.ifgoiano.aluno.exercicio.dupla;
+package br.edu.ifgoiano.aluno.exercicio.sozinho;
 
 
 import com.google.gson.annotations.SerializedName;
@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class MudancaDeEstado {
+    //Nome dado para variavel receber o valor do JSON.
     @SerializedName("alpha")
     private List <String> alfabeto;
     @SerializedName("state")
@@ -76,7 +77,7 @@ public class MudancaDeEstado {
             Map<String, List<String>> transicoes = funcaoTransicao.get(correnteEstado);
 
             if (transicoes == null) {
-                return false; // Transição não definida
+                return false;
             }
 
             List<String> proximoEstado = transicoes.get(String.valueOf(simbolo));

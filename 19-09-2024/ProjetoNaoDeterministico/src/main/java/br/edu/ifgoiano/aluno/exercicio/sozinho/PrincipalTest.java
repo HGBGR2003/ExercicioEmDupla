@@ -1,8 +1,7 @@
-package br.edu.ifgoiano.aluno.exercicio.dupla;
+package br.edu.ifgoiano.aluno.exercicio.sozinho;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 public class PrincipalTest {
     public static void main(String[] args) {
@@ -32,10 +31,9 @@ public class PrincipalTest {
         Gson gson = new GsonBuilder().create();
         MudancaDeEstado mde = gson.fromJson(testeJson, MudancaDeEstado.class);
 
-
         String entrada = "01";
         boolean aceitou = mde.simulando(entrada);
-        System.out.println("A string " + entrada + " é aceita pelo DFA? " + aceitou);
+        System.out.println("A string " + entrada + " é aceita pelo DFA ? " + aceitou);
 
     }
 
