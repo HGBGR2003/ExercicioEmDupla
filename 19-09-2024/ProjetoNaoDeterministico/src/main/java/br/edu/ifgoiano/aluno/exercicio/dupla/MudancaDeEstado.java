@@ -18,10 +18,14 @@ public class MudancaDeEstado {
     @SerializedName("end_state")
    private Set <String> finalEstado;
     @SerializedName("transition")
-   private Map <String, Map <String, String>> funcaoTransicao = new HashMap<>();
+   private Map <String, Map <String, List<String>>> funcaoTransicao = new HashMap<>();
 
-    public MudancaDeEstado() {
-        //this.funcaoTransicao = new HashMap<>();
+    public MudancaDeEstado(List<String> alfabeto, Set<String> estados, String inicialEstado, Set<String> finalEstado, Map<String, Map<String, List<String>>> funcaoTransicao) {
+        this.alfabeto = alfabeto;
+        this.estados = estados;
+        this.inicialEstado = inicialEstado;
+        this.finalEstado = finalEstado;
+        this.funcaoTransicao = funcaoTransicao;
     }
 
     public List<String> getAlfabeto() {
@@ -56,11 +60,11 @@ public class MudancaDeEstado {
         this.finalEstado = finalEstado;
     }
 
-    public Map<String, Map<String, String>> getFuncaoTransicao() {
+    public Map<String, Map<String, List<String>>> getFuncaoTransicao() {
         return funcaoTransicao;
     }
 
-    public void setFuncaoTransicao(Map<String, Map<String, String>> funcaoTransicao) {
+    public void setFuncaoTransicao(Map<String, Map<String, List<String>>> funcaoTransicao) {
         this.funcaoTransicao = funcaoTransicao;
     }
 
@@ -69,21 +73,20 @@ public class MudancaDeEstado {
         System.out.println("Estado inicial: " + correnteEstado);
 
         for (char simbolo: entrada.toCharArray()){
-            String simboloSt = String.valueOf(simbolo);
-            Map<String, String> transicoes = funcaoTransicao.get(correnteEstado);
+            Map<String, List<String>> transicoes = funcaoTransicao.get(correnteEstado);
 
             if (transicoes == null) {
                 return false; // Transição não definida
             }
 
-            String proximoEstado = transicoes.get(simboloSt);
+            List<String> proximoEstado = transicoes.get(String.valueOf(simbolo));
 
             if (proximoEstado == null){
                 System.out.println("Não há transição para o símbolo " + simbolo + " no estado " + correnteEstado);
                 return false;
             }
 
-            correnteEstado = proximoEstado;
+            correnteEstado = proximoEstado.get(0);
             System.out.println("Lido: " + simbolo + ", próximo estado: " + correnteEstado);
 
         }
