@@ -62,5 +62,9 @@ public class NFA {
     public void setTransicoes(Map<String, Map<Character, Set<String>>> transicoes) {
         this.transicoes = transicoes;
     }
+
+
+
+
 }
 

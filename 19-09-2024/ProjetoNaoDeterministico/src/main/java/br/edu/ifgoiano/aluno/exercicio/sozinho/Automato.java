@@ -4,17 +4,17 @@ import java.util.List;
 import java.util.Map;
 
 public class Automato {
-    private List<Integer> alpha;
+    private List<Character> alpha;
     private List<String> state;
     private String initial_state;
     private List<String> end_state;
     private Map<String, Map<String, List<String>>> transition;
 
-    public List<Integer> getAlpha() {
+    public List<Character> getAlpha() {
         return alpha;
     }
 
-    public void setAlpha(List<Integer> alpha) {
+    public void setAlpha(List<Character> alpha) {
         this.alpha = alpha;
     }
 

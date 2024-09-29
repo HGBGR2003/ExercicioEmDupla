@@ -53,16 +53,30 @@ public class PrincipalMain {
                 }
             }
 
+/*
 
-            DFA dfa = Conversor.converter(nfa);
 
             String entrada = "010";  // String a ser testada
             boolean aceito = dfa.simulando(entrada);
-            System.out.println("A string " + entrada + " é aceita pelo DFA? " + aceito);
+            System.out.println("A string " + entrada + " é aceita pelo DFA? " + aceito);*/
+
+            DFA dfa = Conversor.converter(nfa);
+            String entrada = "010";
+
+            String estadoAtual = dfa.getEstadoInicial();
+            System.out.println("Estado inicial: " + estadoAtual);
+            for (char c : entrada.toCharArray()) {
+                // ... lógica de transição do DFA ...
+                System.out.println("Lendo: " + c + ", próximo estado: " + estadoAtual);
+            }
+            System.out.println("Estado final: " + estadoAtual);
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+
+
         }
     }
 

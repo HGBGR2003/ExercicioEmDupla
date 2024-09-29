@@ -3,6 +3,9 @@ package br.edu.ifgoiano.aluno.exercicio.sozinho;
 import java.util.*;
 
 public class Conversor {
+
+
+
     public static DFA converter(NFA nfa) {
         List<Character> alfabeto = nfa.getAlfabeto();
         Set<String> estadosNFA = nfa.getEstados();
@@ -57,10 +60,15 @@ public class Conversor {
             }
         }
 
+
+
         // Cria o DFA final
         DFA dfa = new DFA(alfabeto, estadosDFA, estadoInicialDFA, estadosFinaisDFA);
         dfa.funcao = transicoesDFA;
 
         return dfa;
     }
+
+
+
 }
